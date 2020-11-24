@@ -15,24 +15,32 @@ import java.lang.Math;
 
 public class TaskTwo extends AppCompatActivity {
 
+    //Producer Thread
     class producer extends Thread {
+
         private final BlockingQueue<Integer> Q;
         Random random = new Random();
+
         producer(BlockingQueue q) {Q = q;}
+
         public void run() {
+            //heavy math section
             while(true){
                 int i = 0;
                 while(i < 100000){
                     i++;
                 }
                 i = 0;
+                //Check to make sure the queue is not full
                 while(Q.size() >= 50) {
                     try {
+                        //wait command to allow other threads to perform functions while the producer is idle
                         wait(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                //Generate and insert random number into the queue
                 int randomInt = random.nextInt(10);
                 try {
                     Q.put(randomInt);
@@ -43,6 +51,7 @@ public class TaskTwo extends AppCompatActivity {
         }
     }
 
+    //Consumer thread
     class consumer extends Thread {
         private final BlockingQueue<Integer> Q;
         Random random = new Random();
@@ -52,13 +61,14 @@ public class TaskTwo extends AppCompatActivity {
         }
 
         public void run() {
-            while (true) {
                 while (true) {
+                    //Heavy Math
                     int i = 0;
                     while (i < 100000) {
                         i++;
                     }
                     i = 0;
+                    //Take an item off of the queue
                     try {
                         Q.take();
                     } catch (InterruptedException e) {
@@ -67,8 +77,8 @@ public class TaskTwo extends AppCompatActivity {
                 }
             }
         }
-    }
 
+        //Setting up the activity wide variables for use
     BlockingQueue<Integer> queue = new LinkedBlockingQueue<Integer>();
     producer p = new producer(queue);
     consumer c = new consumer(queue);
@@ -79,16 +89,19 @@ public class TaskTwo extends AppCompatActivity {
         setContentView(R.layout.activity_task_two);
         p.start();
         c.start();
+        //Main loop for updating the GUI
         while(true){
             try {
                 wait(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //Checks the size of the queue and updates LEDs accordingly;
             checkQueue();
         }
     }
 
+    //Raises the priority of the producer
     public void higher(View view){
         int prio = p.getPriority();
         if (prio < Thread.MAX_PRIORITY) {
@@ -98,19 +111,24 @@ public class TaskTwo extends AppCompatActivity {
         return;
     }
 
+    //reduces the priority of the producer
     public void lower(View view){
         int prio = p.getPriority();
         if (prio > Thread.MIN_PRIORITY) {
             prio--;
             p.setPriority(prio);
         }
+        return;
     }
 
+    //Function that will check the size of the Queue and update the LED light
     public void checkQueue(){
         int length = queue.size();
         //Add Radio Buttons and Make them respond to the length of the queue
+        return;
     }
 
+    //Button that allows the user to switch back to task 1
     public void taskOne(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
