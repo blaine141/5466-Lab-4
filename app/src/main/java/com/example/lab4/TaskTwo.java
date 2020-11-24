@@ -1,85 +1,81 @@
 package com.example.lab4;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.view.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.Random;
-import java.lang.Math;
 
-public class TaskTwo extends AppCompatActivity {
+class producer extends Thread {
 
-    //Producer Thread
-    class producer extends Thread {
+    private final BlockingQueue<Integer> Q;
+    Random random = new Random();
 
-        private final BlockingQueue<Integer> Q;
-        Random random = new Random();
+    producer(BlockingQueue q) {Q = q;}
 
-        producer(BlockingQueue q) {Q = q;}
-
-        public void run() {
-            //heavy math section
-            while(true){
-                int i = 0;
-                while(i < 100000){
-                    i++;
-                }
-                i = 0;
-                //Check to make sure the queue is not full
-                while(Q.size() >= 50) {
-                    try {
-                        //wait command to allow other threads to perform functions while the producer is idle
-                        wait(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                //Generate and insert random number into the queue
-                int randomInt = random.nextInt(10);
+    public void run() {
+        //heavy math section
+        while(true){
+            int i = 0;
+            while(i < 100000){
+                i++;
+            }
+            i = 0;
+            //Check to make sure the queue is not full
+            while(Q.size() >= 50) {
                 try {
-                    Q.put(randomInt);
+                    //wait command to allow other threads to perform functions while the producer is idle
+                    sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }
-    }
-
-    //Consumer thread
-    class consumer extends Thread {
-        private final BlockingQueue<Integer> Q;
-        Random random = new Random();
-
-        consumer(BlockingQueue q) {
-            Q = q;
-        }
-
-        public void run() {
-                while (true) {
-                    //Heavy Math
-                    int i = 0;
-                    while (i < 100000) {
-                        i++;
-                    }
-                    i = 0;
-                    //Take an item off of the queue
-                    try {
-                        Q.take();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+            //Generate and insert random number into the queue
+            int randomInt = random.nextInt(10);
+            try {
+                Q.put(randomInt);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+    }
+}
 
-        //Setting up the activity wide variables for use
-    BlockingQueue<Integer> queue = new LinkedBlockingQueue<Integer>();
+//Consumer thread
+class consumer extends Thread {
+    private final BlockingQueue<Integer> Q;
+    Random random = new Random();
+
+    consumer(BlockingQueue q) {
+        Q = q;
+    }
+
+    public void run() {
+        while (true) {
+            //Heavy Math
+            int i = 0;
+            while (i < 100000) {
+                i++;
+            }
+            i = 0;
+            //Take an item off of the queue
+            try {
+                Q.take();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class TaskTwo extends AppCompatActivity {
+
+    //Setting up the activity wide variables for use
+    BlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
     producer p = new producer(queue);
     consumer c = new consumer(queue);
 
@@ -87,15 +83,13 @@ public class TaskTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_two);
+
+
+
         p.start();
         c.start();
         //Main loop for updating the GUI
         while(true){
-            try {
-                wait(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             //Checks the size of the queue and updates LEDs accordingly;
             checkQueue();
         }
