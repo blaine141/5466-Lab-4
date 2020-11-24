@@ -1,6 +1,8 @@
 package com.example.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.os.Bundle;
@@ -34,9 +36,12 @@ import android.os.Bundle;
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            workerThread p = new workerThread(12);
+            startCalculating();
+        }
 
-            heavyMath(12);
+        public void startCalculating(){
+            heavyMath(11);
+            workerThread p = new workerThread(11);
             p.start();
         }
 
@@ -111,6 +116,11 @@ import android.os.Bundle;
                 i = 0;
             }
 
+        }
+
+        public void taskTwo(View view) {
+            Intent intent = new Intent(this, TaskTwo.class);
+            startActivity(intent);
         }
 
 }
