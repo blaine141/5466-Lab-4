@@ -21,7 +21,18 @@ public class TaskTwo extends AppCompatActivity {
         producer(BlockingQueue q) {Q = q;}
         public void run() {
             while(true){
-                //Insert Heavy Math
+                int i = 0;
+                while(i < 100000){
+                    i++;
+                }
+                i = 0;
+                while(Q.size() >= 50) {
+                    try {
+                        wait(10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 int randomInt = random.nextInt(10);
                 try {
                     Q.put(randomInt);
@@ -35,14 +46,24 @@ public class TaskTwo extends AppCompatActivity {
     class consumer extends Thread {
         private final BlockingQueue<Integer> Q;
         Random random = new Random();
-        consumer(BlockingQueue q) {Q = q;}
+
+        consumer(BlockingQueue q) {
+            Q = q;
+        }
+
         public void run() {
-            while(true){
-                //Heavy Math
-                try {
-                    Q.take();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            while (true) {
+                while (true) {
+                    int i = 0;
+                    while (i < 100000) {
+                        i++;
+                    }
+                    i = 0;
+                    try {
+                        Q.take();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
