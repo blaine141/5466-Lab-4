@@ -13,7 +13,7 @@ import android.os.Bundle;
         workerThread(int toFactorial) {
             this.toFactorial = toFactorial;
         }
-//Heavy math function
+    //Heavy math function
         public void run() {
             long bigNum = 1;
             long i = 0;
@@ -37,15 +37,13 @@ import android.os.Bundle;
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            //Calls start Calculating to allow the GUI to have time to set up before entering a long loop
-            startCalculating();
         }
 
-        public void startCalculating(){
+        public void startCalculating(View view){
             //Heavy math to be done by the program itself
-            heavyMath(11);
+            heavyMath(12);
             //Worker thread does heavy math in the background
-            workerThread p = new workerThread(11);
+            workerThread p = new workerThread(12);
             p.start();
         }
 

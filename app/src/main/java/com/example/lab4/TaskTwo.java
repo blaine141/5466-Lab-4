@@ -83,9 +83,6 @@ public class TaskTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_two);
-
-
-
         p.start();
         c.start();
         //Main loop for updating the GUI
