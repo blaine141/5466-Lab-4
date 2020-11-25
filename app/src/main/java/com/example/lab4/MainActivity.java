@@ -2,31 +2,15 @@ package com.example.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.RadioButton;
 import android.os.Bundle;
+import android.widget.Toast;
 
-//Thread that will do heavy math in the background
-    class workerThread extends Thread {
-        int toFactorial;
-        workerThread(int toFactorial) {
-            this.toFactorial = toFactorial;
-        }
-    //Heavy math function
-        public void run() {
-            long bigNum = 1;
-            long i = 0;
-            while(this.toFactorial >= 1) {
-                bigNum *= this.toFactorial;
-                this.toFactorial--;
-                while (i < bigNum) {
-                    i++;
-                }
-                i = 0;
-            }
-        }
-    }
 
     public class MainActivity extends AppCompatActivity {
 
@@ -39,12 +23,19 @@ import android.os.Bundle;
             setContentView(R.layout.activity_main);
         }
 
-        public void startCalculating(View view){
-            //Heavy math to be done by the program itself
-            heavyMath(12);
-            //Worker thread does heavy math in the background
-            workerThread p = new workerThread(12);
-            p.start();
+        Handler handler = new Handler(Looper.getMainLooper());
+        public void calculate() {
+            int length = 20000;
+            int guess = 0;
+            while(Math.sqrt(guess) < length)
+                guess++;
+            final Context context = this;
+            handler.post(new Runnable(){
+                @Override
+                public void run() {
+                    Toast.makeText(context, "Heavy computation complete!", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         //Lab 1 GUI code
@@ -52,7 +43,7 @@ import android.os.Bundle;
             RadioButton bit0 = (RadioButton) findViewById(R.id.radioButton);
             RadioButton bit1 = (RadioButton) findViewById(R.id.radioButton2);
             RadioButton bit2 = (RadioButton) findViewById(R.id.radioButton3);
-            check++;
+            check = (check % 8) + 1;
             switch(check) {
                 case 1:
                     bit0.setChecked(true);
@@ -98,28 +89,25 @@ import android.os.Bundle;
         }
 
         public void reset(View view) {
-            RadioButton bit0 = (RadioButton) findViewById(R.id.radioButton);
-            RadioButton bit1 = (RadioButton) findViewById(R.id.radioButton2);
-            RadioButton bit2 = (RadioButton) findViewById(R.id.radioButton3);
-            bit0.setChecked(false);
-            bit1.setChecked(false);
-            bit2.setChecked(false);
-            check=0;
+            check = 0;
+            count(view);
         }
 
-        //Identical function to the heavy math in the threads
-        public void heavyMath(int toFactorial) {
-            long bigNum = 1;
-            long i = 0;
-            while(toFactorial >= 1) {
-                bigNum *= toFactorial;
-                toFactorial--;
-                while(i < bigNum){
-                    i++;
-                }
-                i = 0;
-            }
 
+        //Identical function to the heavy math in the threads
+        public void withoutThread(View view) {
+            calculate();
+        }
+
+        public void withThread(View view) {
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    calculate();
+                }
+            };
+            t.start();
         }
 
         //Button that allows for switching between task 1 and 2

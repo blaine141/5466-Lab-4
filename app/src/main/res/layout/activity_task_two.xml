@@ -6,6 +6,219 @@
     android:layout_height="match_parent"
     tools:context=".TaskTwo">
 
+    <RadioButton
+        android:id="@+id/counterLED22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED21"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED12" />
+
+    <RadioButton
+        android:id="@+id/counterLED23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED22"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED13" />
+
+    <RadioButton
+        android:id="@+id/counterLED24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED23"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED14" />
+
+    <RadioButton
+        android:id="@+id/counterLED25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED24"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED15" />
+
+    <RadioButton
+        android:id="@+id/counterLED26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED25"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED16" />
+
+    <RadioButton
+        android:id="@+id/counterLED27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED26"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED17" />
+
+    <RadioButton
+        android:id="@+id/counterLED28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED27"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED18" />
+
+    <RadioButton
+        android:id="@+id/counterLED29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED28"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED19" />
+
+    <RadioButton
+        android:id="@+id/counterLED30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED29"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED20" />
+
+    <RadioButton
+        android:id="@+id/counterLED17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED16"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED7" />
+
+    <RadioButton
+        android:id="@+id/counterLED18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED17"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED8" />
+
+    <RadioButton
+        android:id="@+id/counterLED19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED18"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED9" />
+
+    <RadioButton
+        android:id="@+id/counterLED20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED19"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED10" />
+
+    <RadioButton
+        android:id="@+id/counterLED21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/counterLED11"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED11" />
+
+    <RadioButton
+        android:id="@+id/counterLED16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED15"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED6" />
+
+    <RadioButton
+        android:id="@+id/counterLED10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED9"
+        app:layout_constraintTop_toTopOf="@+id/counterLED9" />
+
+    <RadioButton
+        android:id="@+id/counterLED9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED8"
+        app:layout_constraintTop_toTopOf="@+id/counterLED8" />
+
+    <RadioButton
+        android:id="@+id/counterLED6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED5"
+        app:layout_constraintTop_toTopOf="@+id/counterLED5" />
+
+    <RadioButton
+        android:id="@+id/counterLED1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/counterLED11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/counterLED1"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED1" />
+
+    <RadioButton
+        android:id="@+id/counterLED12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED11"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED2" />
+
+    <RadioButton
+        android:id="@+id/counterLED13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED12"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED3" />
+
+    <RadioButton
+        android:id="@+id/counterLED14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED13"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED4" />
+
+    <RadioButton
+        android:id="@+id/counterLED15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED14"
+        app:layout_constraintTop_toBottomOf="@+id/counterLED5" />
+
+    <RadioButton
+        android:id="@+id/counterLED2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED1"
+        app:layout_constraintTop_toTopOf="@+id/counterLED1" />
+
+    <RadioButton
+        android:id="@+id/counterLED3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED2"
+        app:layout_constraintTop_toTopOf="@+id/counterLED2" />
+
+    <RadioButton
+        android:id="@+id/counterLED4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED3"
+        app:layout_constraintTop_toTopOf="@+id/counterLED3" />
+
+    <RadioButton
+        android:id="@+id/counterLED5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED4"
+        app:layout_constraintTop_toTopOf="@+id/counterLED4" />
+
+    <RadioButton
+        android:id="@+id/counterLED7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED6"
+        app:layout_constraintTop_toTopOf="@+id/counterLED6" />
+
+    <RadioButton
+        android:id="@+id/counterLED8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/counterLED7"
+        app:layout_constraintTop_toTopOf="@+id/counterLED7" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
@@ -30,18 +243,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
-        android:onClick="taskOne"
-        android:text="Task 1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
